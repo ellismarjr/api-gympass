@@ -11,6 +11,7 @@
         "arrowParens": "always",
         "semi": true
       }
-    ]
+    ],
+    "camelcase": "off"
   }
 }
