@@ -13,6 +13,7 @@ describe('Get User Profile Use Case', () => {
     userRepository = new InMemoryUsersRepository();
     sut = new GetUserProfileUseCase(userRepository);
   });
+
   it('should be able to authenticate', async () => {
     const createdUser = await userRepository.create({
       name: 'John Doe',
@@ -34,7 +35,7 @@ describe('Get User Profile Use Case', () => {
       password_hash: await hash('123456', 6),
     });
 
-    expect(() => sut.execute({
+    await expect(() => sut.execute({
       userId: 'non-exist-id',
     })).rejects.toBeInstanceOf(ResourceNotFoundError)
   });
